@@ -10,5 +10,10 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/ankushputtaswamy/Java-Project.git'
             }
         }
+        stage('mvn compile') {
+            steps {
+                sh "mvn clean compile"
+            }
+        }
     }
 }
