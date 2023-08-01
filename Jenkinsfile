@@ -20,5 +20,14 @@ pipeline {
                 sh "mvn clean install"
             }   
         }
+        stage('docker build & push') {
+            steps {
+                script {
+                    withDockerRegistry(credentialsId: '89c6d379-af23-4049-97f7-88a1c145d5c9', toolName: 'docker') {
+                        sh "docker build -t app:latest ."
+                    }
+                }
+            }   
+        }
     }
 }
